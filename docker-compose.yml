@@ -1,11 +1,11 @@
 rethinkdb:
-    image: rethinkdb
+    image: registry.cn-hangzhou.aliyuncs.com/hollywantdev/rethinkdb
     ports:
         - "8080"
         - "28015"
         - "29015"
 proxy:
-    image: ehazlett/docker-proxy:latest
+    image: registry.cn-hangzhou.aliyuncs.com/hollywantdev/docker-proxy
     command: -i
     volumes:
         - "/var/run/docker.sock:/var/run/docker.sock"
@@ -13,7 +13,7 @@ proxy:
         - "2375"
 
 swarm:
-    image: swarm:latest
+    image: registry.cn-hangzhou.aliyuncs.com/hollywantdev/swarm
     command: m --host tcp://0.0.0.0:2375 proxy:2375
     links:
         - "proxy:proxy"
